@@ -1,6 +1,44 @@
 #include <iostream>
+#include <fstream>
 
+using namespace std;
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    ifstream in_stream;
+    ofstream out_stream;
+    char buff[256] = {};
+
+    in_stream.open("data1.csv");
+    if (in_stream.fail()) {
+        cout << "ERROR: cannot loading file";
+        return -1;
+    }
+    int line = 0;
+    // Looping to determine the size of array base on number of lines
+    while(!in_stream.eof()) {
+        in_stream.getline(buff, sizeof(buff));
+        line++;
+    }
+    // Reset stream to starting position
+    in_stream.clear();
+    in_stream.seekg(0);
+    // Initialize x, y array to store the value
+    int x[line];
+    int y[line];
+    string dataline; // Initialize a string variable to handling each line in csv
+    int comma_index; // Initialize an int variable to store the index of separated comma
+
+    in_stream.getline(buff, sizeof(buff)); // skip the first line
+
+    for (int i = 0; i < line; i++) {
+        in_stream.getline(buff, sizeof(buff));
+        dataline = buff;
+        comma_index = dataline.find(',');
+        x[i] = stoi(dataline.substr(0, comma_index));
+        y[i] = stoi(dataline.substr(comma_index + 1));
+    }
+    cout << y[0] << endl;
+    cout << "There are " << line << " lines in the csv file" << endl;
+
     return 0;
 }
+
