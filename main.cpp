@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include "mean.h"
 
 using namespace std;
 int main() {
@@ -22,22 +23,25 @@ int main() {
     in_stream.clear();
     in_stream.seekg(0);
     // Initialize x, y array to store the value
-    int x[line];
-    int y[line];
+    int array_size = line - 1;
+    int x[array_size];
+    int y[array_size];
     string dataline; // Initialize a string variable to handling each line in csv
     int comma_index; // Initialize an int variable to store the index of separated comma
 
     in_stream.getline(buff, sizeof(buff)); // skip the first line
 
-    for (int i = 0; i < line; i++) {
+    for (int i = 0; i < array_size; i++) {
         in_stream.getline(buff, sizeof(buff));
         dataline = buff;
         comma_index = dataline.find(',');
         x[i] = stoi(dataline.substr(0, comma_index));
         y[i] = stoi(dataline.substr(comma_index + 1));
     }
-    cout << y[0] << endl;
+    cout << x[0] << endl;
     cout << "There are " << line << " lines in the csv file" << endl;
+
+    mean(x, array_size);
 
     return 0;
 }
