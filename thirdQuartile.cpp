@@ -1,7 +1,7 @@
 // COSC2082 - A1 - Quan Bui
 
 #include <iostream>
-#include "firstQuartile.h"
+#include "thirdQuartile.h"
 #include "median.h"
 
 using namespace std;
