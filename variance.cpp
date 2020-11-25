@@ -14,13 +14,7 @@ double variance(int num[], int numberOfData) {
         sumSquareDiff += (num[i] - meanVari) * (num[i] - meanVari);
     double vari = sumSquareDiff / (numberOfData - 1);
 
-    double stanDevi = sqrt(vari);
-
     return vari;
-
-
-
-
 
 }
 
