@@ -5,14 +5,14 @@
 
 using namespace std;
 
-double variance(int num[], int numberOfData) {
+double variance(int array[], int arraySize) {
 
-    double meanVari = mean(num, numberOfData);
+    double meanVari = mean(array, arraySize);
 
     double sumSquareDiff = 0;
-    for (int i = 0; i < numberOfData; i++)
-        sumSquareDiff += (num[i] - meanVari) * (num[i] - meanVari);
-    double vari = sumSquareDiff / (numberOfData - 1);
+    for (int i = 0; i < arraySize; i++)
+        sumSquareDiff += (array[i] - meanVari) * (array[i] - meanVari);
+    double vari = sumSquareDiff / (arraySize - 1);
 
     return vari;
 

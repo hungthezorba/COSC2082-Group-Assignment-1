@@ -5,10 +5,10 @@
 
 using namespace std;
 
-double stanDevi(int num[], int numberOfData) {
+double stanDevi(int array[], int arraySize) {
 
 
-    double variStan = variance(num, numberOfData);
+    double variStan = variance(array, arraySize);
 
     double stanDevi = sqrt(variStan);
 
