@@ -1,8 +1,11 @@
+
 // COSC2082 - A1 - Quan Bui
 
 #include <iostream>
 #include "thirdQuartile.h"
 #include "median.h"
+
+#define INDEX
 
 using namespace std;
 
@@ -13,9 +16,8 @@ double findThirdQuartile(int array[], int arrSize) {
 
   // Populate upper half array with upper half data
   for (int i = arrSize/2 + 1; i < arrSize; i++) {
-    for (int j = 0; j < arrSize/2; j++) {
-      upperHalf[j] = array[i];
-    }
+    upperHalf[INDEX] = array[i];
+    INDEX++;
   }
 
   // Calculate third quartile with Median of upper half data
