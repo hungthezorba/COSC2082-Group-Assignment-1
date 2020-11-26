@@ -1,18 +1,18 @@
 #include <iostream>;
 #include "mean.h"
+
 using namespace std;
 
-float mean(int num[], int numberOfData) {
+double mean(int array[], int arraySize) {
 
-    float sum = 0.0,
+    double sum = 0.0,
             mean;
 
-    for(int i = 0; i < numberOfData; i++)
-    {
-        sum += num[i];
+    for (int i = 0; i < arraySize; i++) {
+        sum += array[i];
     }
-    mean = sum / numberOfData;
+    mean = sum / arraySize;
 
-    cout<<"Mean is: " <<mean<<endl;
-    return 0;
+
+    return mean;
 }
