@@ -12,7 +12,5 @@ float mean(int num[], int numberOfData) {
         sum += num[i];
     }
     mean = sum / numberOfData;
-
-    cout<<"Mean is: " <<mean<<endl;
-    return 0;
+    return mean;
 }
