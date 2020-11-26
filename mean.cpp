@@ -3,6 +3,7 @@
 
 using namespace std;
 
+
 double mean(int array[], int arraySize) {
 
     double sum = 0.0,

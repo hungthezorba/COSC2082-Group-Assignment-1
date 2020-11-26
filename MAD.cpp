@@ -15,7 +15,7 @@ double getMeanDistance(int value,double mean){
     }
     return mean-value;
 }
-double getMAD(int a[],int n ){
+double getMAD(float a[],int n ){
     float mea = mean(a,n);
     double total = 0;
     for(int i =0;i<n;i++){
