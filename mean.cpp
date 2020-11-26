@@ -11,6 +11,7 @@ double mean(int array[], int arraySize) {
     for (int i = 0; i < arraySize; i++) {
         sum += array[i];
     }
+
     mean = sum / arraySize;
 
 
