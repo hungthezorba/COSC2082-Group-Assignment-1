@@ -24,8 +24,8 @@ int main() {
     in_stream.seekg(0);
     // Initialize x, y array to store the value
     int array_size = line - 1;
-    float x[array_size];
-    float y[array_size];
+    double *x = new double [array_size];
+    double *y = new double [array_size];
     string dataline; // Initialize a string variable to handling each line in csv
     int comma_index; // Initialize an int variable to store the index of separated comma
 
@@ -40,9 +40,7 @@ int main() {
     }
     cout << x[0] << endl;
     cout << "There are " << line << " lines in the csv file" << endl;
-
-    mean(x, array_size);
-
+    
     return 0;
 }
 
