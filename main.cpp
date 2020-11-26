@@ -8,7 +8,7 @@ int main() {
     ofstream out_stream;
     char buff[256] = {};
 
-    in_stream.open("data1.csv");
+    in_stream.open("fake.csv");
     if (in_stream.fail()) {
         cout << "ERROR: cannot loading file";
         return -1;
@@ -24,8 +24,8 @@ int main() {
     in_stream.seekg(0);
     // Initialize x, y array to store the value
     int array_size = line - 1;
-    int x[array_size];
-    int y[array_size];
+    float x[array_size];
+    float y[array_size];
     string dataline; // Initialize a string variable to handling each line in csv
     int comma_index; // Initialize an int variable to store the index of separated comma
 
@@ -35,8 +35,8 @@ int main() {
         in_stream.getline(buff, sizeof(buff));
         dataline = buff;
         comma_index = dataline.find(',');
-        x[i] = stoi(dataline.substr(0, comma_index));
-        y[i] = stoi(dataline.substr(comma_index + 1));
+        x[0] = stof(dataline.substr(0, comma_index));
+        y[i] = stof(dataline.substr(comma_index + 1));
     }
     cout << x[0] << endl;
     cout << "There are " << line << " lines in the csv file" << endl;

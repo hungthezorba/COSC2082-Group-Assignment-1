@@ -2,7 +2,7 @@
 #include "mean.h"
 using namespace std;
 
-float mean(int num[], int numberOfData) {
+float mean(float num[], int numberOfData) {
 
     float sum = 0.0,
             mean;
