@@ -12,8 +12,10 @@ double findThirdQuartile(int array[], int arrSize) {
   double thirdQuartile;
 
   // Populate upper half array with upper half data
-  for (int i = arrSize/2; i < arrSize; i++) {
-    upperHalf[i] = array[i];
+  for (int i = arrSize/2 + 1; i < arrSize; i++) {
+    for (int j = 0; j < arrSize/2; j++) {
+      upperHalf[j] = array[i];
+    }
   }
 
   // Calculate third quartile with Median of upper half data
