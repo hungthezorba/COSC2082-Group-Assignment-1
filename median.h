@@ -4,7 +4,7 @@
 
 #ifndef MEDIAN_H
 #define MEDIAN_H
-
+void deepcopy(int source[], int target[], int len);
 void swap(int *xp, int *yp);
 void bubbleSort(int arr[], int n);
 double findMedian(int a[],int n);

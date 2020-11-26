@@ -14,6 +14,12 @@ void swap(int *xp, int *yp)
     *yp = temp;
 }
 
+void deepcopy(int source[], int target[], int len) {
+    for (int i = 0; i < len; i++) {
+        target[i] = source[i];
+    }
+}
+
 void bubbleSort(int arr[], int n)
 {
     int i, j;
@@ -27,12 +33,19 @@ void bubbleSort(int arr[], int n)
 double findMedian(int a[],int n)
 {
     // First we sort the array
-
-    bubbleSort(a, n);
+    int* newarr = new int[size];
+    deepcopy(a, newarr, size);
+    bubbleSort(newarr, size);
     // check for even case
-    if (n % 2 != 0)
-        return (double)a[n / 2];
+    if (size % 2 != 0) {
+        double returnVal = (double)newarr[size / 2];
+        delete newarr;
+        return returnVal;
+    }
 
-    return (double)(a[(n - 1) / 2] + a[n / 2]) / 2.0;
+    double returnVal = (double)(newarr[(size - 1) / 2] + newarr[size / 2]) / 2.0;
+    delete newarr;
+
+    return returnVal;
 }
 
