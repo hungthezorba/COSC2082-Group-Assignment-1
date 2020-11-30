@@ -1,9 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include "mean.h"
-#include "median.h"
-#include "mode.h"
-#include "MAD.h"
+
+
 
 using namespace std;
 int main() {
@@ -12,6 +11,7 @@ int main() {
     char buff[256] = {};
 
     in_stream.open("data1.csv");
+
     if (in_stream.fail()) {
         cout << "ERROR: cannot loading file";
         return -1;
@@ -39,12 +39,13 @@ int main() {
         dataline = buff;
         comma_index = dataline.find(',');
         x[i] = stof(dataline.substr(0, comma_index));
+
         y[i] = stof(dataline.substr(comma_index + 1));
     }
     cout << x[0] << endl;
     cout << "There are " << line << " lines in the csv file" << endl;
 
-
+    
     return 0;
 }
 
