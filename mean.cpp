@@ -1,9 +1,10 @@
-#include <iostream>;
+#include <iostream>
 #include "mean.h"
 
 using namespace std;
 
-double mean(int array[], int arraySize) {
+
+double mean(double array[], int arraySize) {
 
     double sum = 0.0,
             mean;
