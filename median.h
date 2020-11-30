@@ -4,10 +4,10 @@
 
 #ifndef MEDIAN_H
 #define MEDIAN_H
-void deepcopy(int source[], int target[], int len);
-void swap(int *xp, int *yp);
-void bubbleSort(int arr[], int n);
-double findMedian(int a[],int n);
+void deepcopy(double source[], double target[], int len);
+void swap(double *xp, double *yp);
+void bubbleSort(double arr[], int arraySize);
+double findMedian(double a[],int arraySize);
 
 
 #endif //UNTITLED_MEDIAN_H

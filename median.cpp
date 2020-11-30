@@ -7,34 +7,34 @@
 
 using namespace std;
 
-void swap(int *xp, int *yp)
+void swap(double *xp, double *yp)
 {
     int temp = *xp;
     *xp = *yp;
     *yp = temp;
 }
 
-void deepcopy(int source[], int target[], int len) {
+void deepcopy(double source[], double target[], int len) {
     for (int i = 0; i < len; i++) {
         target[i] = source[i];
     }
 }
 
-void bubbleSort(int arr[], int n)
+void bubbleSort(double array[], int arraySize)
 {
     int i, j;
-    for (i = 0; i < n-1; i++)
+    for (i = 0; i < arraySize-1; i++)
 
         // Last i elements are already in place
-        for (j = 0; j < n-i-1; j++)
-            if (arr[j] > arr[j+1])
-                swap(&arr[j], &arr[j+1]);
+        for (j = 0; j < arraySize-i-1; j++)
+            if (array[j] > array[j+1])
+                swap(&array[j], &array[j+1]);
 }
-double findMedian(int a[],int n)
+double findMedian(double array[],int size)
 {
     // First we sort the array
-    int* newarr = new int[size];
-    deepcopy(a, newarr, size);
+    double *newarr = new double [size];
+    deepcopy(array, newarr, size);
     bubbleSort(newarr, size);
     // check for even case
     if (size % 2 != 0) {
