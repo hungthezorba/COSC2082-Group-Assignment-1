@@ -8,7 +8,7 @@
 using namespace std;
 
 
-int mode(int array[], int arrSize) {
+double mode(double array[], int arrSize) {
     int maxCount = 0;
     int mode;
     int count;
