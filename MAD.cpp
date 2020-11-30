@@ -15,11 +15,11 @@ double getMeanDistance(int value,double mean){
     }
     return mean-value;
 }
-double getMAD(int a[],int n ){
-    float mea = mean(a,n);
+double getMAD(double a[],int n ){
+    double mean_value = mean(a,n);
     double total = 0;
     for(int i =0;i<n;i++){
-        total+=getMeanDistance(a[i],mea);
+        total+=getMeanDistance(a[i],mean_value);
     }
     return total/n;
 }
