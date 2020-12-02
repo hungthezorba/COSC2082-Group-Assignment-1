@@ -6,6 +6,9 @@
 #include "MAD.h"
 #include "firstQuartile.h"
 #include "thirdQuartile.h"
+#include "variance.h"
+#include "stanDevi.h"
+#include "Inferential.h"
 
 using namespace std;
 int main() {

@@ -14,8 +14,8 @@ double Cov(double* valueX, double* valueY, int size ){
         double thiscov = (valueX[i] - meanX)*(valueY[i]-meanY);
         total += thiscov;
 
-    return total/(size -1);
     }
+    return total/(size -1);
 }
 
 
