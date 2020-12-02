@@ -6,6 +6,6 @@
 #define COSC2082_GROUP_ASSIGNMENT_1_FIRSTQUARTILE_H
 
 //Declare function
-double findFirstQuartile(int array[], int arrSize);
+double findFirstQuartile(double array[], int arrSize);
 
 #endif //COSC2082_GROUP_ASSIGNMENT_1_FIRSTQUARTILE_H
