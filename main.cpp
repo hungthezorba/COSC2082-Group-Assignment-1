@@ -14,6 +14,7 @@ int main() {
     char buff[256] = {};
 
     in_stream.open("data1.csv");
+
     if (in_stream.fail()) {
         cout << "ERROR: cannot loading file";
         return -1;
@@ -47,7 +48,6 @@ int main() {
     cout << "There are " << line << " lines in the csv file" << endl;
     delete[] x;
     delete[] y;
-
     return 0;
 }
 
