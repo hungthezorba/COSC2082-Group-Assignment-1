@@ -4,6 +4,8 @@
 #include "median.h"
 #include "mode.h"
 #include "MAD.h"
+#include "firstQuartile.h"
+#include "thirdQuartile.h"
 
 using namespace std;
 int main() {
@@ -43,7 +45,8 @@ int main() {
     }
     cout << x[0] << endl;
     cout << "There are " << line << " lines in the csv file" << endl;
-
+    delete[] x;
+    delete[] y;
 
     return 0;
 }
