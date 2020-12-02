@@ -1,6 +1,6 @@
 #ifndef STANDEVI_H
 #define STANDEVI_H
 
-double stanDevi(int num[], int numberOfData);
+double stanDevi(double num[], int numberOfData);
 
 #endif
