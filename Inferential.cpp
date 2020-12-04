@@ -6,44 +6,44 @@
 #include "stanDevi.h"
 using namespace std;
 
-double Cov(int* valueX, int* valueY, int size ){
-    float meanX = mean(valueX,size);
-    float meanY = mean(valueY, size);
+double Cov(double* valueX, double* valueY, int size ){
+    double meanX = mean(valueX, size);
+    double meanY = mean(valueY, size);
     double total = 0;
     for (int i = 0;i<size;i++){
         double thiscov = (valueX[i] - meanX)*(valueY[i]-meanY);
         total += thiscov;
 
-    return total/(size -1);
     }
+    return total/(size -1);
 }
 
 
-double Corr(int* valueX, int* valueY, int size ){
-    int totalX = 0;
-    int totalY = 0;
-    int productXY = 0;
-    int totalYSquare = 0;
-    int totalXSquare = 0;
+double Corr(double* valueX, double* valueY, int size ){
+    double totalX = 0;
+    double totalY = 0;
+    double productXY = 0;
+    double totalYSquare = 0;
+    double totalXSquare = 0;
     for (int i = 0 ;i<size;i++){
-        int thisX = valueX[i];
-        int thisY = valueY[i];
+        double thisX = valueX[i];
+        double thisY = valueY[i];
         totalX+=thisX;
         totalY += thisY;
         productXY += thisX * thisY;
         totalXSquare += thisX*thisX;
         totalYSquare += thisY*thisY;
     }
-    int numerator = - totalX*totalY + size*productXY;
-    int denominatorSquare = (size*totalXSquare - totalX*totalX)*(size*totalYSquare - totalY*totalY);
+    double numerator = - totalX*totalY + size*productXY;
+    double denominatorSquare = (size*totalXSquare - totalX*totalX)*(size*totalYSquare - totalY*totalY);
     double denominator = sqrt(denominatorSquare);
     return numerator/denominator;
 }
 
-double *LinearRegression (int *Xarray, int *Yarray, int size){
+double *LinearRegression (double *Xarray, double *Yarray, int size){
     static double ParameterPoint[2];
-    float meanX = mean(Xarray,size);
-    float meanY = mean(Yarray, size);
+    double meanX = mean(Xarray,size);
+    double meanY = mean(Yarray, size);
     double stdevX = stanDevi(Xarray,size);
     double stdevY = stanDevi(Yarray,size);
     double corr = Corr(Xarray,Yarray,size);

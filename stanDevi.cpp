@@ -5,7 +5,8 @@
 
 using namespace std;
 
-double stanDevi(int array[], int arraySize) {
+
+double stanDevi(double array[], int arraySize) {
 
 
     double variStan = variance(array, arraySize);

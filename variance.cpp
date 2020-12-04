@@ -5,7 +5,7 @@
 
 using namespace std;
 
-double variance(int array[], int arraySize) {
+double variance(double array[], int arraySize) {
 
     double meanVari = mean(array, arraySize);
 
@@ -17,4 +17,3 @@ double variance(int array[], int arraySize) {
     return vari;
 
 }
-

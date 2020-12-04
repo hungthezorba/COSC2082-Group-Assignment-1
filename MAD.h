@@ -6,6 +6,6 @@
 #define MAD_H
 
 double getMeanDistance(int value,double mean);
-double getMAD(int a[],int n );
+double getMAD(double a[],int n );
 
 #endif //UNTITLED_MAD_H

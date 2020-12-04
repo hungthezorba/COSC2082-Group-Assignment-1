@@ -1,6 +1,14 @@
 #include <iostream>
 #include <fstream>
 #include "mean.h"
+#include "median.h"
+#include "mode.h"
+#include "MAD.h"
+#include "firstQuartile.h"
+#include "thirdQuartile.h"
+#include "variance.h"
+#include "stanDevi.h"
+#include "Inferential.h"
 
 using namespace std;
 int main() {
@@ -8,7 +16,8 @@ int main() {
     ofstream out_stream;
     char buff[256] = {};
 
-    in_stream.open("fake.csv");
+    in_stream.open("data1.csv");
+
     if (in_stream.fail()) {
         cout << "ERROR: cannot loading file";
         return -1;
@@ -35,12 +44,13 @@ int main() {
         in_stream.getline(buff, sizeof(buff));
         dataline = buff;
         comma_index = dataline.find(',');
-        x[0] = stof(dataline.substr(0, comma_index));
+        x[i] = stof(dataline.substr(0, comma_index));
         y[i] = stof(dataline.substr(comma_index + 1));
     }
     cout << x[0] << endl;
     cout << "There are " << line << " lines in the csv file" << endl;
-    
+    delete[] x;
+    delete[] y;
     return 0;
 }
 

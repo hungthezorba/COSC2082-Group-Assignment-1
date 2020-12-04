@@ -8,10 +8,10 @@
 
 using namespace std;
 
-double findFirstQuartile(int array[], int arrSize) {
-    int *lowerHalf = new int[arrSize/2]; // declare a array contains lower half in data
+double findFirstQuartile(double array[], int arrSize) {
+    double *lowerHalf = new double[arrSize/2]; // declare a array contains lower half in data
     double firstQuartile;
-    int *newArr = new int[arrSize];
+    double *newArr = new double[arrSize];
     for (int j = 0;j<arrSize;j++){
         newArr[j] = array[j];
     }
@@ -20,9 +20,9 @@ double findFirstQuartile(int array[], int arrSize) {
     for (int i = 0; i < arrSize/2; i++) {
         lowerHalf[i] = newArr[i]; //
     }
-    delete newArr;
 
     firstQuartile = findMedian(lowerHalf, arrSize/2);
+    delete newArr;
     delete lowerHalf;
     return firstQuartile;
 }
