@@ -11,6 +11,9 @@
 #include "Inferential.h"
 
 using namespace std;
+
+*double
+
 int main() {
     ifstream in_stream;
     ofstream out_stream;
@@ -32,7 +35,7 @@ int main() {
     in_stream.clear();
     in_stream.seekg(0);
     // Initialize x, y array to store the value
-    int array_size = line - 1;
+    int array_size = line - 1; // subtract the header line
     double *x = new double [array_size];
     double *y = new double [array_size];
     string dataline; // Initialize a string variable to handling each line in csv
@@ -41,11 +44,11 @@ int main() {
     in_stream.getline(buff, sizeof(buff)); // skip the first line
 
     for (int i = 0; i < array_size; i++) {
-        in_stream.getline(buff, sizeof(buff));
-        dataline = buff;
-        comma_index = dataline.find(',');
-        x[i] = stof(dataline.substr(0, comma_index));
-        y[i] = stof(dataline.substr(comma_index + 1));
+        in_stream.getline(buff, sizeof(buff)); // Get the whole line data
+        dataline = buff; // assign buff to string type variable
+        comma_index = dataline.find(','); // Retrieve the index of comma in the line
+        x[i] = stof(dataline.substr(0, comma_index)); // Retrieve x value in the line
+        y[i] = stof(dataline.substr(comma_index + 1)); // Retrieve y value in the line
     }
 
     cout << "- - - - - - - - Descriptive Statistics - - - - - - - -" << endl;
