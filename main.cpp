@@ -47,8 +47,30 @@ int main() {
         x[i] = stof(dataline.substr(0, comma_index));
         y[i] = stof(dataline.substr(comma_index + 1));
     }
-    cout << x[0] << endl;
-    cout << "There are " << line << " lines in the csv file" << endl;
+
+    cout << "- - - - - - - - Descriptive Statistics - - - - - - - -" << endl;
+    cout << "mean_x = " << mean(x, array_size) << " - " << "mean_y = " << mean(y, array_size) << endl;
+    cout << "median_x = " << findMedian(x, array_size) << " - " << "median_y = " << findMedian(y, array_size) << endl;
+    cout << "mode_x = " << mode(x, array_size) << " - " << "mode_y = " << mode(y, array_size) << endl;
+    cout << "var_x = " << variance(x, array_size) << " - " << "var_y = " << variance(y, array_size) << endl;
+    cout << "stdev_x = " << stanDevi(x, array_size) << " - " << "stdev_y = " << stanDevi(y, array_size) << endl;
+    cout << "mad_x = " << getMAD(x, array_size) << " - " << "mad_y = " << getMAD(y, array_size) << endl;
+    cout << "q1_x = " << findFirstQuartile(x, array_size) << " - " << "q1_y = " << findFirstQuartile(y, array_size) << endl;
+    cout << "q3_x = " << findThirdQuartile(x, array_size) << " - " << "q3_y = " << findThirdQuartile(y, array_size) << endl;
+
+    cout << "- - - - - - - - Inferential Statistics - - - - - - - -" << endl;
+    cout << "cov(x_y) = " << Cov(x, y, array_size) << endl;
+    cout << "r(x_y) = " << Corr(x, y, array_size) << endl;
+    double *LRegression = LinearRegression(x, y, array_size);
+    double slope = LRegression[0];
+    double intercept = LRegression[1];
+    cout << "y = " << slope << "x + " << intercept << endl;
+
+
+    cout << "- - - - - - - - Group Information - - - - - - - -" << endl;
+    cout << "ASSIGNMENT 1 GROUP 15" << endl;
+    cout << "s3804690, s3804690@rmit.edu.vn, Hung, Nguyen";
+
     delete[] x;
     delete[] y;
     return 0;
