@@ -12,14 +12,10 @@
 
 using namespace std;
 
-*double
-
-int main() {
+int read_line_csv(char *filename) {
     ifstream in_stream;
-    ofstream out_stream;
     char buff[256] = {};
-
-    in_stream.open("data1.csv");
+    in_stream.open(filename);
 
     if (in_stream.fail()) {
         cout << "ERROR: cannot loading file";
@@ -32,12 +28,21 @@ int main() {
         line++;
     }
     // Reset stream to starting position
-    in_stream.clear();
-    in_stream.seekg(0);
-    // Initialize x, y array to store the value
-    int array_size = line - 1; // subtract the header line
-    double *x = new double [array_size];
-    double *y = new double [array_size];
+
+    in_stream.close();
+    return line;
+}
+
+void read_CSV(double *array_x, double *array_y, char *filename, int array_size) {
+    ifstream in_stream;
+    char buff[256] = {};
+
+    in_stream.open(filename);
+    if (in_stream.fail()) {
+        cout << "ERROR: Cannot loading the file" << endl;
+        return;
+    }
+
     string dataline; // Initialize a string variable to handling each line in csv
     int comma_index; // Initialize an int variable to store the index of separated comma
 
@@ -47,9 +52,21 @@ int main() {
         in_stream.getline(buff, sizeof(buff)); // Get the whole line data
         dataline = buff; // assign buff to string type variable
         comma_index = dataline.find(','); // Retrieve the index of comma in the line
-        x[i] = stof(dataline.substr(0, comma_index)); // Retrieve x value in the line
-        y[i] = stof(dataline.substr(comma_index + 1)); // Retrieve y value in the line
+        array_x[i] = stof(dataline.substr(0, comma_index)); // Retrieve x value in the line
+        array_y[i] = stof(dataline.substr(comma_index + 1)); // Retrieve y value in the line
     }
+    in_stream.close();
+
+}
+
+int main(int argc, char *argv[]) {
+
+    // Initialize x, y array to store the value
+    int array_size = read_line_csv(argv[1]) - 1; // subtract the header line
+    double *x = new double [array_size];
+    double *y = new double [array_size];
+
+    read_CSV(x,y,argv[1],array_size);
 
     cout << "- - - - - - - - Descriptive Statistics - - - - - - - -" << endl;
     cout << "mean_x = " << mean(x, array_size) << " - " << "mean_y = " << mean(y, array_size) << endl;
