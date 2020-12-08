@@ -5,8 +5,8 @@
 #ifndef INFERENTIAL_H
 #define INFERENTIAL_H
 
-double Cov(double* valueX, double* valueY, int size );
-double Corr(double* valueX, double* valueY, int size );
-double *LinearRegression (double *Xarray, double *Yarray, int size);
+double Cov(double* valueX, double* valueY, int arraySize );
+double Corr(double* valueX, double* valueY, int arraySize );
+double *LinearRegression (double *Xarray, double *Yarray, int arraySize);
 
 #endif //UNTITLED_INFERENTIAL_H

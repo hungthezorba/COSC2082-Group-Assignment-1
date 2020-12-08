@@ -32,15 +32,15 @@ int main() {
     in_stream.clear();
     in_stream.seekg(0);
     // Initialize x, y array to store the value
-    int array_size = line - 1;
-    double *x = new double [array_size];
-    double *y = new double [array_size];
+    int arraySize = line - 1;
+    double *x = new double [arraySize];
+    double *y = new double [arraySize];
     string dataline; // Initialize a string variable to handling each line in csv
     int comma_index; // Initialize an int variable to store the index of separated comma
 
     in_stream.getline(buff, sizeof(buff)); // skip the first line
 
-    for (int i = 0; i < array_size; i++) {
+    for (int i = 0; i < arraySize; i++) {
         in_stream.getline(buff, sizeof(buff));
         dataline = buff;
         comma_index = dataline.find(',');
