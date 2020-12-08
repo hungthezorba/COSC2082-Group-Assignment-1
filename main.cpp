@@ -33,7 +33,7 @@ int read_line_csv(char *filename) {
     return line;
 }
 
-void read_CSV(double *array_x, double *array_y, char *filename, int array_size) {
+void read_CSV(double *arrayX, double *arrayY, char *filename, int arraySize) {
     ifstream in_stream;
 
     in_stream.open(filename);
@@ -42,16 +42,17 @@ void read_CSV(double *array_x, double *array_y, char *filename, int array_size) 
         return;
     }
 
+
     string dataline; // Initialize a string variable to handling each line in csv
     int comma_index; // Initialize an int variable to store the index of separated comma
 
     getline(in_stream, dataline); // skip the first line
 
-    for (int i = 0; i < array_size; i++) {
+    for (int i = 0; i < arraySize; i++) {
         getline(in_stream, dataline); // skip the first line
         comma_index = dataline.find(','); // Retrieve the index of comma in the line
-        array_x[i] = stof(dataline.substr(0, comma_index)); // Retrieve x value in the line
-        array_y[i] = stof(dataline.substr(comma_index + 1)); // Retrieve y value in the line
+        arrayX[i] = stof(dataline.substr(0, comma_index)); // Retrieve x value in the line
+        arrayY[i] = stof(dataline.substr(comma_index + 1)); // Retrieve y value in the line
     }
     in_stream.close();
 
@@ -60,26 +61,26 @@ void read_CSV(double *array_x, double *array_y, char *filename, int array_size) 
 int main(int argc, char *argv[]) {
 
     // Initialize x, y array to store the value
-    int array_size = read_line_csv(argv[1]) - 1; // subtract the header line
-    double *x = new double [array_size];
-    double *y = new double [array_size];
+    int arraySize = read_line_csv(argv[1]) - 1; // subtract the header line
+    double *arrayX = new double [arraySize];
+    double *arrayY = new double [arraySize];
 
-    read_CSV(x,y,argv[1],array_size);
+    read_CSV(arrayX,arrayY,argv[1],arraySize);
 
     cout << "- - - - - - - - Descriptive Statistics - - - - - - - -" << endl;
-    cout << "mean_x = " << mean(x, array_size) << " - " << "mean_y = " << mean(y, array_size) << endl;
-    cout << "median_x = " << findMedian(x, array_size) << " - " << "median_y = " << findMedian(y, array_size) << endl;
-    cout << "mode_x = " << mode(x, array_size) << " - " << "mode_y = " << mode(y, array_size) << endl;
-    cout << "var_x = " << variance(x, array_size) << " - " << "var_y = " << variance(y, array_size) << endl;
-    cout << "stdev_x = " << stanDevi(x, array_size) << " - " << "stdev_y = " << stanDevi(y, array_size) << endl;
-    cout << "mad_x = " << getMAD(x, array_size) << " - " << "mad_y = " << getMAD(y, array_size) << endl;
-    cout << "q1_x = " << findFirstQuartile(x, array_size) << " - " << "q1_y = " << findFirstQuartile(y, array_size) << endl;
-    cout << "q3_x = " << findThirdQuartile(x, array_size) << " - " << "q3_y = " << findThirdQuartile(y, array_size) << endl;
+    cout << "mean_x = " << mean(arrayX, arraySize) << " - " << "mean_y = " << mean(arrayY, arraySize) << endl;
+    cout << "median_x = " << findMedian(arrayX, arraySize) << " - " << "median_y = " << findMedian(arrayY, arraySize) << endl;
+    cout << "mode_x = " << mode(arrayX, arraySize) << " - " << "mode_y = " << mode(arrayY, arraySize) << endl;
+    cout << "var_x = " << variance(arrayX, arraySize) << " - " << "var_y = " << variance(arrayY, arraySize) << endl;
+    cout << "stdev_x = " << stanDevi(arrayX, arraySize) << " - " << "stdev_y = " << stanDevi(arrayY, arraySize) << endl;
+    cout << "mad_x = " << getMAD(arrayX, arraySize) << " - " << "mad_y = " << getMAD(arrayY, arraySize) << endl;
+    cout << "q1_x = " << findFirstQuartile(arrayX, arraySize) << " - " << "q1_y = " << findFirstQuartile(arrayY, arraySize) << endl;
+    cout << "q3_x = " << findThirdQuartile(arrayX, arraySize) << " - " << "q3_y = " << findThirdQuartile(arrayY, arraySize) << endl;
 
     cout << "- - - - - - - - Inferential Statistics - - - - - - - -" << endl;
-    cout << "cov(x_y) = " << Cov(x, y, array_size) << endl;
-    cout << "r(x_y) = " << Corr(x, y, array_size) << endl;
-    double *LRegression = LinearRegression(x, y, array_size);
+    cout << "cov(x_y) = " << Cov(arrayX, arrayY, arraySize) << endl;
+    cout << "r(x_y) = " << Corr(arrayX, arrayY, arraySize) << endl;
+    double *LRegression = LinearRegression(arrayX, arrayY, arraySize);
     double slope = LRegression[0];
     double intercept = LRegression[1];
     cout << "y = " << slope << "x + " << intercept << endl;
@@ -93,8 +94,9 @@ int main(int argc, char *argv[]) {
     cout << "s3777230, s3777230@rmit.edu.vn, Huy, Bui" << endl;
 
 
-    delete[] x;
-    delete[] y;
+    delete[] arrayX;
+    delete[] arrayY;
+
     return 0;
 }
 

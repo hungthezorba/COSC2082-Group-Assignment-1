@@ -8,13 +8,13 @@
 using namespace std;
 
 
-double mode(double array[], int arrSize) {
+double mode(double array[], int arraySize) {
     int maxCount = 0;
     int mode;
     int count;
-    for (int i = 0; i < arrSize; i++) {
+    for (int i = 0; i < arraySize; i++) {
         count = 0;
-        for (int j = 0; j < arrSize; j++) {
+        for (int j = 0; j < arraySize; j++) {
             if (array[i] == array[j]) {
                 count++;
             }

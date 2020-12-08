@@ -1,6 +1,6 @@
 #ifndef VARIANCE_H
 #define VARIANCE_H
 
-double variance(double num[], int numberOfData);
+double variance(double array[], int arraySize);
 
 #endif
