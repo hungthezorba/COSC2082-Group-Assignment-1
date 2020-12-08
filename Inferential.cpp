@@ -6,12 +6,13 @@
 #include "stanDevi.h"
 using namespace std;
 
-double Cov(double* valueX, double* valueY, int arraySize ){
-    double meanX = mean(valueX, arraySize);
-    double meanY = mean(valueY, arraySize);
+double Cov(double* arrayX, double* arrayY, int arraySize ){
+    double meanX = mean(arrayX, arraySize);
+    double meanY = mean(arrayY, arraySize);
     double total = 0;
     for (int i = 0;i<arraySize;i++){
-        double thiscov = (valueX[i] - meanX)*(valueY[i]-meanY);
+        double thiscov = (arrayX[i] - meanX)*(arrayY[i]-meanY);
+
         total += thiscov;
 
     }
@@ -19,15 +20,17 @@ double Cov(double* valueX, double* valueY, int arraySize ){
 }
 
 
-double Corr(double* valueX, double* valueY, int arraySize ){
+double Corr(double* arrayX, double* arrayY, int arraySize ){
+
     double totalX = 0;
     double totalY = 0;
     double productXY = 0;
     double totalYSquare = 0;
     double totalXSquare = 0;
     for (int i = 0 ;i<arraySize;i++){
-        double thisX = valueX[i];
-        double thisY = valueY[i];
+        double thisX = arrayX[i];
+        double thisY = arrayY[i];
+
         totalX+=thisX;
         totalY += thisY;
         productXY += thisX * thisY;
@@ -40,13 +43,14 @@ double Corr(double* valueX, double* valueY, int arraySize ){
     return numerator/denominator;
 }
 
-double *LinearRegression (double *Xarray, double *Yarray, int arraySize){
+double *LinearRegression (double *arrayX, double *arrayY, int arraySize){
     static double ParameterPoint[2];
-    double meanX = mean(Xarray,arraySize);
-    double meanY = mean(Yarray, arraySize);
-    double stdevX = stanDevi(Xarray,arraySize);
-    double stdevY = stanDevi(Yarray,arraySize);
-    double corr = Corr(Xarray,Yarray,arraySize);
+    double meanX = mean(arrayX,arraySize);
+    double meanY = mean(arrayY, arraySize);
+    double stdevX = stanDevi(arrayX,arraySize);
+    double stdevY = stanDevi(arrayY,arraySize);
+    double corr = Corr(arrayX,arrayY,arraySize);
+
 
     double slope = corr*stdevY/stdevX;
     double bias = meanY - slope*meanX;

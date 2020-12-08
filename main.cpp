@@ -33,8 +33,9 @@ int main() {
     in_stream.seekg(0);
     // Initialize x, y array to store the value
     int arraySize = line - 1;
-    double *x = new double [arraySize];
-    double *y = new double [arraySize];
+    double *arrayX = new double [arraySize];
+    double *arrayY = new double [arraySize];
+
     string dataline; // Initialize a string variable to handling each line in csv
     int comma_index; // Initialize an int variable to store the index of separated comma
 
@@ -44,13 +45,13 @@ int main() {
         in_stream.getline(buff, sizeof(buff));
         dataline = buff;
         comma_index = dataline.find(',');
-        x[i] = stof(dataline.substr(0, comma_index));
-        y[i] = stof(dataline.substr(comma_index + 1));
+        arrayX[i] = stof(dataline.substr(0, comma_index));
+        arrayY[i] = stof(dataline.substr(comma_index + 1));
     }
-    cout << x[0] << endl;
+    cout << arrayX[0] << endl;
     cout << "There are " << line << " lines in the csv file" << endl;
-    delete[] x;
-    delete[] y;
+    delete[] arrayX;
+    delete[] arrayY;
     return 0;
 }
 
