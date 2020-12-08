@@ -14,7 +14,7 @@ using namespace std;
 
 int read_line_csv(char *filename) {
     ifstream in_stream;
-    char buff[256] = {};
+    string dataline;
     in_stream.open(filename);
 
     if (in_stream.fail()) {
@@ -24,7 +24,7 @@ int read_line_csv(char *filename) {
     int line = 0;
     // Looping to determine the size of array base on number of lines
     while(!in_stream.eof()) {
-        in_stream.getline(buff, sizeof(buff));
+        getline(in_stream, dataline);
         line++;
     }
     // Reset stream to starting position
@@ -35,7 +35,6 @@ int read_line_csv(char *filename) {
 
 void read_CSV(double *array_x, double *array_y, char *filename, int array_size) {
     ifstream in_stream;
-    char buff[256] = {};
 
     in_stream.open(filename);
     if (in_stream.fail()) {
@@ -46,11 +45,10 @@ void read_CSV(double *array_x, double *array_y, char *filename, int array_size) 
     string dataline; // Initialize a string variable to handling each line in csv
     int comma_index; // Initialize an int variable to store the index of separated comma
 
-    in_stream.getline(buff, sizeof(buff)); // skip the first line
+    getline(in_stream, dataline); // skip the first line
 
     for (int i = 0; i < array_size; i++) {
-        in_stream.getline(buff, sizeof(buff)); // Get the whole line data
-        dataline = buff; // assign buff to string type variable
+        getline(in_stream, dataline); // skip the first line
         comma_index = dataline.find(','); // Retrieve the index of comma in the line
         array_x[i] = stof(dataline.substr(0, comma_index)); // Retrieve x value in the line
         array_y[i] = stof(dataline.substr(comma_index + 1)); // Retrieve y value in the line
@@ -89,7 +87,11 @@ int main(int argc, char *argv[]) {
 
     cout << "- - - - - - - - Group Information - - - - - - - -" << endl;
     cout << "ASSIGNMENT 1 GROUP 15" << endl;
-    cout << "s3804690, s3804690@rmit.edu.vn, Hung, Nguyen";
+    cout << "s3804690, s3804690@rmit.edu.vn, Hung, Nguyen" << endl;
+    cout << "s3804687, s3804687@rmit.edu.vn, Dat, Ngo" << endl;
+    cout << "s3536647, s3536647@rmit.edu.vn, Quan, Bui" << endl;
+    cout << "s3777230, s3777230@rmit.edu.vn, Huy, Bui" << endl;
+
 
     delete[] x;
     delete[] y;
