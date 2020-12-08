@@ -12,6 +12,7 @@ double Cov(double* arrayX, double* arrayY, int arraySize ){
     double total = 0;
     for (int i = 0;i<arraySize;i++){
         double thiscov = (arrayX[i] - meanX)*(arrayY[i]-meanY);
+
         total += thiscov;
 
     }
@@ -20,6 +21,7 @@ double Cov(double* arrayX, double* arrayY, int arraySize ){
 
 
 double Corr(double* arrayX, double* arrayY, int arraySize ){
+
     double totalX = 0;
     double totalY = 0;
     double productXY = 0;
@@ -28,6 +30,7 @@ double Corr(double* arrayX, double* arrayY, int arraySize ){
     for (int i = 0 ;i<arraySize;i++){
         double thisX = arrayX[i];
         double thisY = arrayY[i];
+
         totalX+=thisX;
         totalY += thisY;
         productXY += thisX * thisY;
@@ -47,6 +50,7 @@ double *LinearRegression (double *arrayX, double *arrayY, int arraySize){
     double stdevX = stanDevi(arrayX,arraySize);
     double stdevY = stanDevi(arrayY,arraySize);
     double corr = Corr(arrayX,arrayY,arraySize);
+
 
     double slope = corr*stdevY/stdevX;
     double bias = meanY - slope*meanX;

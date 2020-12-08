@@ -35,6 +35,7 @@ int main() {
     int arraySize = line - 1;
     double *arrayX = new double [arraySize];
     double *arrayY = new double [arraySize];
+
     string dataline; // Initialize a string variable to handling each line in csv
     int comma_index; // Initialize an int variable to store the index of separated comma
 

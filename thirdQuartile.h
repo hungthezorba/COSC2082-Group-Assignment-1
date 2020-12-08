@@ -4,6 +4,6 @@
 #define COSC2082_GROUP_ASSIGNMENT_1_THIRDQUARTILE_H
 
 //Declare function
-double findThirdQuartile(double array[], int arrSize);
+double findThirdQuartile(double array[], int arraySize);
 
 #endif
