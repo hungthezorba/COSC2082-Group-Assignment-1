@@ -47,7 +47,7 @@ int main() {
         arrayX[i] = stof(dataline.substr(0, comma_index));
         arrayY[i] = stof(dataline.substr(comma_index + 1));
     }
-    cout << x[0] << endl;
+    cout << arrayX[0] << endl;
     cout << "There are " << line << " lines in the csv file" << endl;
     delete[] arrayX;
     delete[] arrayY;
