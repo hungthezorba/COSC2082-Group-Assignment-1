@@ -6,26 +6,26 @@
 #include "stanDevi.h"
 using namespace std;
 
-double Cov(double* valueX, double* valueY, int size ){
-    double meanX = mean(valueX, size);
-    double meanY = mean(valueY, size);
+double Cov(double* valueX, double* valueY, int arraySize ){
+    double meanX = mean(valueX, arraySize);
+    double meanY = mean(valueY, arraySize);
     double total = 0;
-    for (int i = 0;i<size;i++){
+    for (int i = 0;i<arraySize;i++){
         double thiscov = (valueX[i] - meanX)*(valueY[i]-meanY);
         total += thiscov;
 
     }
-    return total/(size -1);
+    return total/(arraySize -1);
 }
 
 
-double Corr(double* valueX, double* valueY, int size ){
+double Corr(double* valueX, double* valueY, int arraySize ){
     double totalX = 0;
     double totalY = 0;
     double productXY = 0;
     double totalYSquare = 0;
     double totalXSquare = 0;
-    for (int i = 0 ;i<size;i++){
+    for (int i = 0 ;i<arraySize;i++){
         double thisX = valueX[i];
         double thisY = valueY[i];
         totalX+=thisX;
@@ -34,19 +34,19 @@ double Corr(double* valueX, double* valueY, int size ){
         totalXSquare += thisX*thisX;
         totalYSquare += thisY*thisY;
     }
-    double numerator = - totalX*totalY + size*productXY;
-    double denominatorSquare = (size*totalXSquare - totalX*totalX)*(size*totalYSquare - totalY*totalY);
+    double numerator = - totalX*totalY + arraySize*productXY;
+    double denominatorSquare = (arraySize*totalXSquare - totalX*totalX)*(arraySize*totalYSquare - totalY*totalY);
     double denominator = sqrt(denominatorSquare);
     return numerator/denominator;
 }
 
-double *LinearRegression (double *Xarray, double *Yarray, int size){
+double *LinearRegression (double *Xarray, double *Yarray, int arraySize){
     static double ParameterPoint[2];
-    double meanX = mean(Xarray,size);
-    double meanY = mean(Yarray, size);
-    double stdevX = stanDevi(Xarray,size);
-    double stdevY = stanDevi(Yarray,size);
-    double corr = Corr(Xarray,Yarray,size);
+    double meanX = mean(Xarray,arraySize);
+    double meanY = mean(Yarray, arraySize);
+    double stdevX = stanDevi(Xarray,arraySize);
+    double stdevY = stanDevi(Yarray,arraySize);
+    double corr = Corr(Xarray,Yarray,arraySize);
 
     double slope = corr*stdevY/stdevX;
     double bias = meanY - slope*meanX;

@@ -6,30 +6,30 @@
 
 using namespace std;
 
-double findThirdQuartile(double array[], int arrSize) {
+double findThirdQuartile(double array[], int arraySize) {
   // Declaration
-  double *upperHalf = new double [arrSize/2]; // An array with the size/2 of the input data
+  double *upperHalf = new double [arraySize/2]; // An array with the size/2 of the input data
   double thirdQuartile;
   int index = 0;
-  double *newArr = new double [arrSize];
-  for (int j = 0;j<arrSize;j++){
+  double *newArr = new double [arraySize];
+  for (int j = 0;j<arraySize;j++){
       newArr[j] = array[j];
   }
-  bubbleSort(newArr,arrSize);
+  bubbleSort(newArr,arraySize);
 
-  if (arrSize % 2 == 0) {
-      for (int i = arrSize/2; i < arrSize; i++) {
+  if (arraySize % 2 == 0) {
+      for (int i = arraySize/2; i < arraySize; i++) {
           upperHalf[index] = newArr[i]; //
           index++;
       }
   } else {
-      for (int i = arrSize/2 + 1; i < arrSize; i++) {
+      for (int i = arraySize/2 + 1; i < arraySize; i++) {
           upperHalf[index] = newArr[i]; //
           index++;
       }
   }
   // Calculate third quartile with Median of upper half data
-  thirdQuartile = findMedian(upperHalf, arrSize/2);
+  thirdQuartile = findMedian(upperHalf, arraySize/2);
   delete newArr;
   delete upperHalf;
 
