@@ -9,7 +9,7 @@ using namespace std;
 
 void swap(double *xp, double *yp)
 {
-    int temp = *xp;
+    double temp = *xp;
     *xp = *yp;
     *yp = temp;
 }
