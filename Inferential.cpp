@@ -1,14 +1,8 @@
-#include <iostream>
-#include "MAD.h"
-#include "mean.h"
 #include "Inferential.h"
 #include <math.h>
-#include "stanDevi.h"
 using namespace std;
 
-double Cov(double* arrayX, double* arrayY, int arraySize ){
-    double meanX = mean(arrayX, arraySize);
-    double meanY = mean(arrayY, arraySize);
+double Cov(double* arrayX, double* arrayY, int arraySize, double meanX, double meanY ){
     double total = 0;
     for (int i = 0;i<arraySize;i++){
         double thiscov = (arrayX[i] - meanX)*(arrayY[i]-meanY);
@@ -43,14 +37,8 @@ double Corr(double* arrayX, double* arrayY, int arraySize ){
     return numerator/denominator;
 }
 
-double *LinearRegression (double *arrayX, double *arrayY, int arraySize){
+double *LinearRegression (double meanX, double meanY, double stdevX, double stdevY, double corr){
     static double ParameterPoint[2];
-    double meanX = mean(arrayX,arraySize);
-    double meanY = mean(arrayY, arraySize);
-    double stdevX = stanDevi(arrayX,arraySize);
-    double stdevY = stanDevi(arrayY,arraySize);
-    double corr = Corr(arrayX,arrayY,arraySize);
-
 
     double slope = corr*stdevY/stdevX;
     double bias = meanY - slope*meanX;
@@ -58,7 +46,6 @@ double *LinearRegression (double *arrayX, double *arrayY, int arraySize){
     ParameterPoint[0] = slope;
     ParameterPoint[1] = bias;
     return ParameterPoint;
-
 
 }
 

@@ -9,8 +9,10 @@
 #include "variance.h"
 #include "stanDevi.h"
 #include "Inferential.h"
+#include <iomanip>
 
 using namespace std;
+
 
 int read_line_csv(char *filename) {
     ifstream in_stream;
@@ -67,20 +69,42 @@ int main(int argc, char *argv[]) {
 
     read_CSV(arrayX,arrayY,argv[1],arraySize);
 
+    double meanX = mean(arrayX, arraySize);
+    double medianX = findMedian(arrayX, arraySize);
+    double modeX = mode(arrayX, arraySize);
+    double varianceX = variance(arrayX, arraySize);
+    double stanDeviX = stanDevi(arrayX, arraySize);
+    double madX = getMAD(arrayX, arraySize);
+    double firstQuartileX = findFirstQuartile(arrayX, arraySize);
+    double thirdQuartileX = findThirdQuartile(arrayX, arraySize);
+
+    double meanY = mean(arrayY, arraySize);
+    double medianY = findMedian(arrayY, arraySize);
+    double modeY = mode(arrayY, arraySize);
+    double varianceY = variance(arrayY, arraySize);
+    double stanDeviY = stanDevi(arrayY, arraySize);
+    double madY = getMAD(arrayY, arraySize);
+    double firstQuartileY = findFirstQuartile(arrayY, arraySize);
+    double thirdQuartileY = findThirdQuartile(arrayY, arraySize);
+
+    double CorrelXY = Corr(arrayX, arrayY, arraySize);
+    std::cout << std::fixed;
+    std::cout << std::setprecision(4);
+
     cout << "- - - - - - - - Descriptive Statistics - - - - - - - -" << endl;
-    cout << "mean_x = " << mean(arrayX, arraySize) << " - " << "mean_y = " << mean(arrayY, arraySize) << endl;
-    cout << "median_x = " << findMedian(arrayX, arraySize) << " - " << "median_y = " << findMedian(arrayY, arraySize) << endl;
-    cout << "mode_x = " << mode(arrayX, arraySize) << " - " << "mode_y = " << mode(arrayY, arraySize) << endl;
-    cout << "var_x = " << variance(arrayX, arraySize) << " - " << "var_y = " << variance(arrayY, arraySize) << endl;
-    cout << "stdev_x = " << stanDevi(arrayX, arraySize) << " - " << "stdev_y = " << stanDevi(arrayY, arraySize) << endl;
-    cout << "mad_x = " << getMAD(arrayX, arraySize) << " - " << "mad_y = " << getMAD(arrayY, arraySize) << endl;
-    cout << "q1_x = " << findFirstQuartile(arrayX, arraySize) << " - " << "q1_y = " << findFirstQuartile(arrayY, arraySize) << endl;
-    cout << "q3_x = " << findThirdQuartile(arrayX, arraySize) << " - " << "q3_y = " << findThirdQuartile(arrayY, arraySize) << endl;
+    cout << "mean_x = " << meanX << " - " << "mean_y = " << meanY << endl;
+    cout << "median_x = " << medianX << " - " << "median_y = " << medianY << endl;
+    cout << "mode_x = " << modeX << " - " << "mode_y = " << modeY << endl;
+    cout << "var_x = " << varianceX << " - " << "var_y = " << varianceY << endl;
+    cout << "stdev_x = " << stanDeviX << " - " << "stdev_y = " << stanDeviY << endl;
+    cout << "mad_x = " << madX << " - " << "mad_y = " << madY << endl;
+    cout << "q1_x = " << firstQuartileX << " - " << "q1_y = " << firstQuartileY << endl;
+    cout << "q3_x = " << thirdQuartileX << " - " << "q3_y = " << thirdQuartileY << endl;
 
     cout << "- - - - - - - - Inferential Statistics - - - - - - - -" << endl;
-    cout << "cov(x_y) = " << Cov(arrayX, arrayY, arraySize) << endl;
-    cout << "r(x_y) = " << Corr(arrayX, arrayY, arraySize) << endl;
-    double *LRegression = LinearRegression(arrayX, arrayY, arraySize);
+    cout << "cov(x_y) = " << Cov(arrayX, arrayY, arraySize, meanX, meanY) << endl;
+    cout << "r(x_y) = " << CorrelXY << endl;
+    double *LRegression = LinearRegression(meanX, meanY, stanDeviX, stanDeviY, CorrelXY);
     double slope = LRegression[0];
     double intercept = LRegression[1];
     cout << "y = " << slope << "x + " << intercept << endl;
