@@ -13,7 +13,5 @@ double mean(double array[], int arraySize) {
         sum += array[i];
     }
     mean = sum / arraySize;
-
-
     return mean;
 }
