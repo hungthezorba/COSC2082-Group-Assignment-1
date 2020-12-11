@@ -45,7 +45,10 @@ void findMode(double array[], int arraySize) {
     double maxCount = 0;
     linked_mode_list mode;
     double current_mode = NULL;
-    double count[arraySize][2];
+    double **count = new double*[arraySize];
+    for (int i = 0; i < arraySize; i++) {
+        count[i] = new double[2];
+    }
     for (int i = 0; i < arraySize; i++) {
         count[i][0] = array[i];
         count[i][1] = 0;
@@ -57,7 +60,7 @@ void findMode(double array[], int arraySize) {
         }
 
         if (count[i][1] > maxCount) {
-            maxCount = static_cast<double>(count[i][1]);
+            maxCount = (count[i][1]);
         }
     }
     for (int i = 0; i < arraySize; i++) {
@@ -68,5 +71,11 @@ void findMode(double array[], int arraySize) {
             }
         }
     }
+
+    for (int i = 0; i < arraySize; i++) {
+        delete[] count[i];
+    }
+
+    delete[] count;
     mode.printMode();
 }
