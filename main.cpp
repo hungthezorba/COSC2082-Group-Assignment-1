@@ -93,16 +93,21 @@ void read_CSV(double *arrayX, double *arrayY, char *filename, int *arraySize) {
         } else {
             Y = dataline.substr(comma_index + 1);
         }
-
+        // Check if X, Y are values of numerical type
         checkX = isNumeric(X);
         checkY = isNumeric(Y);
         if (checkX && checkY) {
+            // If true we convert to double
             arrayX[index] = stod(X);
             arrayY[index] = stod(Y);
+            // And increase the index
             index++;
         }
+        // If not we skip to next line, the index remain the same
         count++;
     }
+    // After all the calculation, the array size now should be the index value
+    // So we return the new arraySize
     *arraySize = index;
     in_stream.close();
 }
@@ -166,7 +171,7 @@ int main(int argc, char *argv[]) {
     cout << "s3536647, s3536647@rmit.edu.vn, Quan, Bui" << endl;
     cout << "s3777230, s3777230@rmit.edu.vn, Huy, Bui" << endl;
 
-
+// Delete the allocate memory in heap to save memory
     delete[] arrayX;
     delete[] arrayY;
 

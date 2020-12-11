@@ -36,8 +36,9 @@ double Corr(double* arrayX, double* arrayY, int arraySize ){
     double denominator = sqrt(denominatorSquare);
     return numerator/denominator;
 }
-
+// This function return an array pointer that store values of slope and bias
 double *LinearRegression (double meanX, double meanY, double stdevX, double stdevY, double corr){
+    // Declare ar
     static double ParameterPoint[2];
 
     double slope = corr*stdevY/stdevX;

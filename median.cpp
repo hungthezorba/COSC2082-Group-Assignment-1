@@ -7,6 +7,7 @@
 
 using namespace std;
 
+// Function to swap the position of two elements, this will be used in bubble sort
 void swap(double *xp, double *yp)
 {
     double temp = *xp;
@@ -14,12 +15,14 @@ void swap(double *xp, double *yp)
     *yp = temp;
 }
 
+// To avoid modifying the original array, we created a function that copy the original array to the new array.
 void deepcopy(double source[], double target[], int len) {
     for (int i = 0; i < len; i++) {
         target[i] = source[i];
     }
 }
 
+// Bubble sort algorithm
 void bubbleSort(double array[], int arraySize)
 {
     int i, j;
@@ -30,6 +33,7 @@ void bubbleSort(double array[], int arraySize)
             if (array[j] > array[j+1])
                 swap(&array[j], &array[j+1]);
 }
+
 double findMedian(double array[],int size)
 {
     // First we sort the array
