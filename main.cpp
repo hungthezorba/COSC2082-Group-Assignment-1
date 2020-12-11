@@ -165,7 +165,7 @@ int main(int argc, char *argv[]) {
 
 
     cout << "- - - - - - - - Group Information - - - - - - - -" << endl;
-    cout << "ASSIGNMENT 1 GROUP 15" << endl;
+    cout << "ASSIGNMENT 1 GROUP 18" << endl;
     cout << "s3804690, s3804690@rmit.edu.vn, Hung, Nguyen" << endl;
     cout << "s3804687, s3804687@rmit.edu.vn, Dat, Ngo" << endl;
     cout << "s3536647, s3536647@rmit.edu.vn, Quan, Bui" << endl;
