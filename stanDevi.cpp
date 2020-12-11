@@ -1,6 +1,6 @@
 #include <iostream>
 #include "variance.h"
-#include <cmath>
+#include <math.h>
 #include "stanDevi.h"
 
 using namespace std;
